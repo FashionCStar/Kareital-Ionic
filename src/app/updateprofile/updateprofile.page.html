@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="mytheme">
+    <ion-buttons slot="start">
+        <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Update Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item color="light" lines="none">
+    <ion-col padding-vertical>
+      <ion-row>
+        <h4 class="small" no-margin><strong>Use this form to change your profile</strong></h4>
+      </ion-row>
+    </ion-col>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col size="6">
+        <img [src]="safePath(apiService.urlPrefix + avatar_url)">
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="selectImage()" color="mytheme"><strong class="white">Upload Avatar</strong>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="First Name" [(ngModel)]="first_name" class="input" padding-horizontal>
+        </ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input type="text" placeholder="Last Name" [(ngModel)]="last_name" class="input" padding-horizontal>
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input clearInput type="email" placeholder="Email" [(ngModel)]="email" class="input" padding-horizontal>
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input clearInput type="date" placeholder="Birthdate" [(ngModel)]="birthday" class="input" padding-horizontal>
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="primary" (click)="updateProfile()" color="mytheme"><strong class="white">Update Profile</strong></ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col>
+        <ion-button expand="block" fill="outline" color="fb">
+          <ion-img src="assets/images/facebook_logo.png" slot="start" class="logo" margin-end></ion-img>Facebook
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" color="light">
+          <ion-img src="assets/images/google_logo.png" slot="start" class="logo" margin-end></ion-img>Google
+        </ion-button>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,97 @@
+<!-- /**
+ * Shoppr - E-commerce app starter Ionic 4(https://www.enappd.com)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source .
+ */ -->
+
+<ion-header class="mybg">
+  <ion-toolbar color="mytheme">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-row align-items-center>
+      <ion-input type="text" padding-start placeholder="I'm shopping for..." class="search-bar" [(ngModel)]="searchKey"
+        (keyup.enter)="onSearch()"></ion-input>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-text><strong>
+      <h5 no-margin>Trending Searches</h5>
+    </strong></ion-text>
+  <ion-row margin-vertical align-items-center class="row">
+    <div class="btn" *ngFor="let b of trending">
+      <ion-text class="filter-btn">{{b.name}}</ion-text>
+    </div>
+  </ion-row>
+  <div class="sep" margin-bottom></div>
+  <!-- <ion-row>
+    <ion-col size="8">
+      <ion-text><strong>
+          <h5 no-margin>Recently Viewed</h5>
+        </strong></ion-text>
+    </ion-col>
+    <ion-col size="4" text-end>
+      <ion-text [routerLink]="['/home', {'id':1}]" routerDirection="forward"><span class="view">View All</span></ion-text>
+    </ion-col>
+  </ion-row>
+  <div>
+    <ion-row>
+      <ion-row class="container-outer">
+        <div *ngFor="let spon of recent" class="container-inner">
+          <img [src]="spon.image[0]" class="spon-img">
+        </div>
+      </ion-row>
+    </ion-row>
+  </div> -->
+
+  <ion-text>
+    <strong>
+      <h5 no-margin>Search Results</h5>
+    </strong></ion-text>
+  <ion-row>
+    <ion-col *ngFor="let data of searchResult;" size="6">
+      <ion-card class="card" no-margin>
+        <ion-badge class="badge" *ngIf="data.offer">{{data.discount}}%</ion-badge>
+        <img [src]="data.image[0]" [alt]="data.name" (click)="open(data)">
+        <ion-card-content>
+          <ion-card-title>
+            <ion-row>
+              <ion-col>
+                <ion-text text-center>
+                  <h6><strong>{{data.name}}</strong></h6>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col *ngIf="data.offer" no-padding>
+                <ion-text text-left class="float-left">
+                  <span class="inline">{{data.currency}}{{data.cost_price}}</span>
+                </ion-text>
+                <ion-text text-right class="float-right">
+                  <strong>{{data.currency}}{{fun.calculate(data.cost_price, data.discount)}}</strong>
+                </ion-text>
+              </ion-col>
+              <ion-col *ngIf="!data.offer" no-padding>
+                <ion-text text-center>
+                  <strong>{{data.currency}}{{data.cost_price}}</strong>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col text-left no-padding>
+                <!-- <h6 text-left class="subtitle">{{data.bought}}+ bought this</h6> -->
+                <ion-button (click)="addToCart(data)" expand="block" fill="outline" color="primary">ADD TO CART
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

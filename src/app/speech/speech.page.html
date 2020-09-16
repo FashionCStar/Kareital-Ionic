@@ -1,0 +1,35 @@
+<!-- /**
+ * Shoppr - E-commerce app starter Ionic 4(https://www.enappd.com)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source .
+ */ -->
+
+ <ion-header>
+  <ion-row>
+    <ion-title>
+      Listen to Me
+    </ion-title>
+  </ion-row>
+</ion-header>
+
+<ion-content padding>
+  <ion-button full (click)="checkPermission()">Check Audio Permission</ion-button>
+  <ion-button full (click)="getPermission()">Get Permission</ion-button>
+  <ion-button full (click)="startListening()">Start Listening</ion-button>
+  <ion-button full (click)="stopListening()" *ngIf="isIos()">Stop Listening</ion-button>
+  <ion-button full (click)="fun.navigate('login')" >Login</ion-button>
+
+  <ion-card>
+    <ion-card-header>This is what I understood...</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let match of matches">
+          {{ match }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

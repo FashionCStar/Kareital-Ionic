@@ -1,0 +1,17 @@
+<ion-row>
+  <ion-col *ngFor="let data of recieved_data; let i = index;" size="6">
+    <ion-card class="card" no-margin (click)="open(i, data)" [ngClass]="data.selected ? 'selected' : ''">
+      <img [src]="apiService.getSubCategoryImage(data)" class="d-block">
+      <ion-card-content>
+        <ion-card-title>
+          <ion-row>
+            <ion-col no-padding>
+              <h6 text-left class="subtitle ellipsis">{{data.name}}</h6>
+              <!-- <ion-text text-left><strong>{{data.name}}</strong></ion-text> -->
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
